@@ -22,5 +22,4 @@ public class Lote {
     @ManyToOne
     @JoinColumn(name = "idEstoque", nullable = false)
     private Estoque estoque;
-
 }

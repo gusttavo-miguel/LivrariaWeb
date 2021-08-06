@@ -1,8 +1,6 @@
 package com.crud.livrariaWeb.model;
 
 import lombok.Data;
-import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
@@ -31,5 +29,4 @@ public class Livros {
 
     @ManyToMany(mappedBy= "livros", cascade = CascadeType.ALL)
     private List<Venda> vendas = new ArrayList<>();
-
 }
