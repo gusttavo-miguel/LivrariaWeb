@@ -12,6 +12,4 @@ public interface ClienteService {
     public Cliente save (Cliente cliente);
     public Cliente update (Cliente cliente);
     public void deleteById (Integer id);
-    //    public Clientes findByNome(String nome);
-
 }

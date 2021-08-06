@@ -31,12 +31,7 @@ public class ClientesController {
         } else {
             return ResponseEntity.notFound().build();
         }
-
     }
-//    @GetMapping(path = "/buscar/nome/{nome}")
-//    public Clientes consultarNome(@PathVariable("nome") String nome) {
-//        return clienteService.findByNome(nome);
-//    }
 
     @GetMapping(path = "/buscar/email/{email}")
     public Cliente pesquisaEmail(@PathVariable("email") String email) {
@@ -57,5 +52,4 @@ public class ClientesController {
     public Cliente updateCliente(@RequestBody Cliente cliente) {
         return clienteService.save(cliente);
     }
-
 }

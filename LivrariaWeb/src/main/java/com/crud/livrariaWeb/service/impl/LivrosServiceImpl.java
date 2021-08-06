@@ -17,8 +17,8 @@ public class LivrosServiceImpl implements LivrosService {
 
     @Override
     public Livros cadastro(Livros livros) {
-        Livros livroSalvo = save(livros);
-        return livroSalvo;
+        livros.setEstoque(null);
+        return save(livros);
     }
 
     @Override

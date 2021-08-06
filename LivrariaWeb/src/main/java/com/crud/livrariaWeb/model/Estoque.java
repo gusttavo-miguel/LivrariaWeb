@@ -25,6 +25,6 @@ public class Estoque {
 
     @OneToMany(mappedBy = "estoque", orphanRemoval = true)
     @Cascade(value = {org.hibernate.annotations.CascadeType.ALL })
-    @Column(name = "lotes", nullable = false)
+    @Column(name = "lotes", nullable = true)
     private List<Lote> lotes = new ArrayList<>();
 }
