@@ -1,7 +1,10 @@
 package com.crud.livrariaWeb.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +14,7 @@ public class Livros {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idLivro;
 
     @Column(length = 20, nullable = false)
     private String nome;
@@ -22,13 +25,11 @@ public class Livros {
     @Column(length = 50, nullable = false)
     private String descricao;
 
-    @OneToMany(mappedBy = "livros")
-    @Column
-    private List<Estoque> lotes = new ArrayList<>();
+    @OneToOne(cascade = CascadeType.ALL)
+    @Size(min = 0)
+    private Estoque estoque;
 
-    @ManyToOne
-    @JoinColumn(name = "idVenda")
-    private Venda venda;
-
+    @ManyToMany(mappedBy= "livros", cascade = CascadeType.ALL)
+    private List<Venda> vendas = new ArrayList<>();
 
 }

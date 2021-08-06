@@ -1,6 +1,6 @@
 package com.crud.livrariaWeb.service.impl;
 
-import com.crud.livrariaWeb.model.Clientes;
+import com.crud.livrariaWeb.model.Cliente;
 import com.crud.livrariaWeb.repository.ClientesRepository;
 import com.crud.livrariaWeb.service.ClienteService;
 import com.crud.livrariaWeb.service.exception.ObjectNotFoundException;
@@ -19,26 +19,26 @@ public class ClienteServiceImpl implements ClienteService {
     private ClientesRepository clienteRepository;
 
     @Override
-    public Clientes cadastro(Clientes clientes) {
-        if (clientes.getNome() == null || clientes.getCpf_cnpj() == null) {
+    public Cliente cadastro(Cliente cliente) {
+        if (cliente.getNome() == null || cliente.getCpfCnpj() == null) {
             String alerta = "Nome e/ou cpf inválidos!";
             return null;
         }
         LocalDateTime data = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        clientes.setDataCadastro(data.format(formatter));
-        Clientes clienteSalvo = save(clientes);
+        cliente.setDataCadastro(data.format(formatter));
+        Cliente clienteSalvo = save(cliente);
         return clienteSalvo;
     }
 
     @Override
-    public List<Clientes> findAll() {
+    public List<Cliente> findAll() {
         return clienteRepository.findAll();
     }
 
     @Override
-    public Clientes findById(Integer id) {
-        Optional<Clientes> cliente = clienteRepository.findById(id);
+    public Cliente findById(Integer id) {
+        Optional<Cliente> cliente = clienteRepository.findById(id);
         return cliente.orElseThrow(() -> new ObjectNotFoundException(
                 "Código não encontrado! Id: " + id));
     }
@@ -49,19 +49,19 @@ public class ClienteServiceImpl implements ClienteService {
 //    }
 
     @Override
-    public Clientes findByEmail(String email) {
-        Optional<Clientes> cliente = Optional.ofNullable(clienteRepository.findByEmail(email));
+    public Cliente findByEmail(String email) {
+        Optional<Cliente> cliente = Optional.ofNullable(clienteRepository.findByEmail(email));
         return cliente.orElseThrow(() -> new ObjectNotFoundException(
                 "Email não encontrado! email: " + email));
     }
 
     @Override
-    public Clientes save(Clientes cliente) {
+    public Cliente save(Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 
     @Override
-    public Clientes update(Clientes cliente) {
+    public Cliente update(Cliente cliente) {
         //Clientes newCliente = findId(cliente.getId());
         //updateData(newCliente, clienteModel);
         return clienteRepository.save(cliente);

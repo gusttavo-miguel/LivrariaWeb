@@ -1,16 +1,16 @@
 package com.crud.livrariaWeb.service;
 
-import com.crud.livrariaWeb.model.Clientes;
+import com.crud.livrariaWeb.model.Cliente;
 import java.util.List;
 
 public interface ClienteService {
 
-    public Clientes cadastro(Clientes clientes);
-    public List<Clientes> findAll ();
-    public Clientes findById(Integer id);
-    public Clientes findByEmail(String email);
-    public Clientes save (Clientes cliente);
-    public Clientes update (Clientes cliente);
+    public Cliente cadastro(Cliente cliente);
+    public List<Cliente> findAll ();
+    public Cliente findById(Integer id);
+    public Cliente findByEmail(String email);
+    public Cliente save (Cliente cliente);
+    public Cliente update (Cliente cliente);
     public void deleteById (Integer id);
     //    public Clientes findByNome(String nome);
 

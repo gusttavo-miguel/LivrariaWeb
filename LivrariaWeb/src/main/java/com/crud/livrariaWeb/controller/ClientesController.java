@@ -1,6 +1,6 @@
 package com.crud.livrariaWeb.controller;
 
-import com.crud.livrariaWeb.model.Clientes;
+import com.crud.livrariaWeb.model.Cliente;
 import com.crud.livrariaWeb.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,14 +17,14 @@ public class ClientesController {
     private ClienteService clienteService;
 
     @PostMapping(path = "/cadastro")
-    public ResponseEntity<Clientes> clienteCadastro(@RequestBody Clientes clientes) {
-        Clientes clienteSalvo = clienteService.save(clientes);
+    public ResponseEntity<Cliente> clienteCadastro(@RequestBody Cliente cliente) {
+        Cliente clienteSalvo = clienteService.save(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body(clienteSalvo);
     }
 
     @GetMapping(path = "/buscar/id/{id}")
-    public ResponseEntity<Clientes> findCliente(@PathVariable("id") Integer id) {
-        Optional<Clientes> cliente = Optional.ofNullable(clienteService.findById(id));
+    public ResponseEntity<Cliente> findCliente(@PathVariable("id") Integer id) {
+        Optional<Cliente> cliente = Optional.ofNullable(clienteService.findById(id));
 
         if (cliente.isPresent()) {
             return ResponseEntity.ok(cliente.get());
@@ -39,12 +39,12 @@ public class ClientesController {
 //    }
 
     @GetMapping(path = "/buscar/email/{email}")
-    public Clientes pesquisaEmail(@PathVariable("email") String email) {
+    public Cliente pesquisaEmail(@PathVariable("email") String email) {
         return clienteService.findByEmail(email);
     }
 
     @GetMapping(path = "/buscar/todos")
-    public List<Clientes> consultar() {
+    public List<Cliente> consultar() {
         return clienteService.findAll();
     }
 
@@ -54,7 +54,7 @@ public class ClientesController {
     }
 
     @PutMapping(path = "/Update")
-    public Clientes updateCliente(@RequestBody Clientes cliente) {
+    public Cliente updateCliente(@RequestBody Cliente cliente) {
         return clienteService.save(cliente);
     }
 

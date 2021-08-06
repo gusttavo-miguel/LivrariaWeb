@@ -1,16 +1,16 @@
 package com.crud.livrariaWeb.repository;
 
 
-import com.crud.livrariaWeb.model.Clientes;
+import com.crud.livrariaWeb.model.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ClientesRepository extends JpaRepository<Clientes, Integer> {
+public interface ClientesRepository extends JpaRepository<Cliente, Integer> {
 
     //Clientes findByNome(String nome);
-    Clientes findByEmail(String email);
-    void deleteById(Long id);
+    Cliente findByEmail(String email);
+    void deleteById(Integer id);
 
 
 }

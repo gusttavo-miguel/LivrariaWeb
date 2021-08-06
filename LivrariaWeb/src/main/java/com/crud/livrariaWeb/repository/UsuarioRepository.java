@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsuarioRepository extends JpaRepository<Funcionarios, Integer> {
+public interface UsuarioRepository extends JpaRepository<Funcionarios, Long> {
 
     Funcionarios findByNome(String nome);
     Funcionarios findByEmail(String email);

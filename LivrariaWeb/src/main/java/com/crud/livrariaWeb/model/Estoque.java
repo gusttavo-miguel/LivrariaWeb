@@ -1,8 +1,13 @@
 package com.crud.livrariaWeb.model;
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
 
+@Data
 @Entity(name = "estoque")
 public class Estoque {
 
@@ -11,56 +16,15 @@ public class Estoque {
     private Long id;
 
     @Column
-    private Integer quantidade;
+    @Size(min = 0)
+    private Long quantidadeTotal;
 
     @Column
-    private String dataRecepcao;
+    @Size(min = 0)
+    private Double valorUni;
 
-    @Column
-    private String dataValidade;
-
-    @ManyToOne
-    @JoinColumn(name = "idLivros", nullable = false)
-    private Livros livros;
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Venda venda) {
-        this.quantidade = venda.getQntd() - quantidade ;
-    }
-
-    public String getDataRecepcao() {
-        return dataRecepcao;
-    }
-
-    public void setDataRecepcao(String dataRecepcao) {
-        this.dataRecepcao = dataRecepcao;
-    }
-
-    public String getDataValidade() {
-        return dataValidade;
-    }
-
-    public void setDataValidade(String dataValidade) {
-        this.dataValidade = dataValidade;
-    }
-
-    public Livros getLivros() {
-        return livros;
-    }
-
-    public void setLivros(Livros livros) {
-        this.livros = livros;
-    }
+    @OneToMany(mappedBy = "estoque", orphanRemoval = true)
+    @Cascade(value = {org.hibernate.annotations.CascadeType.ALL })
+    @Column(name = "lotes", nullable = false)
+    private List<Lote> lotes = new ArrayList<>();
 }
