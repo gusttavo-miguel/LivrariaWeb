@@ -27,7 +27,7 @@ public class UsuarioController {
 
         LocalDateTime data = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
-        funcionarios.setData_cadastro(data.format(formatter));
+        funcionarios.setDataCadastro(data.format(formatter));
         usuarioRepository.save(funcionarios);
         return funcionarios;
 
@@ -50,7 +50,7 @@ public class UsuarioController {
     //---------------------------------------------------------------------------------------------
 
     @GetMapping(path = "/buscar/id/{id}")
-    public ResponseEntity consultarId(@PathVariable("id") Integer id) {
+    public ResponseEntity consultarId(@PathVariable("id") Long id) {
         return usuarioRepository.findById(id).map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }

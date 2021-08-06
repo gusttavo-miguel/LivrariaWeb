@@ -9,10 +9,10 @@ public class Funcionarios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long idFuncionario;
 
     @Column (length = 30, nullable = false)
-    private String data_cadastro;
+    private String dataCadastro;
 
     @Column ( length = 30, nullable = false)
     private String nome;
