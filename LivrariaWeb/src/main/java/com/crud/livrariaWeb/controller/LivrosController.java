@@ -13,7 +13,6 @@ import java.util.Optional;
 @RequestMapping(value = "/livros")
 public class LivrosController {
 
-    @Autowired
     private LivrosService livrosService;
 
     @PostMapping(path = "/cadastro")

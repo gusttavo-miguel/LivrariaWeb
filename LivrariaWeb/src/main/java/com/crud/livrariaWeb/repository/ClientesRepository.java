@@ -8,9 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ClientesRepository extends JpaRepository<Cliente, Integer> {
 
-    //Clientes findByNome(String nome);
     Cliente findByEmail(String email);
     void deleteById(Integer id);
-
-
 }

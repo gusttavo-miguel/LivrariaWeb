@@ -20,15 +20,11 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public Cliente cadastro(Cliente cliente) {
-        if (cliente.getNome() == null || cliente.getCpfCnpj() == null) {
-            String alerta = "Nome e/ou cpf inválidos!";
-            return null;
-        }
+
         LocalDateTime data = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         cliente.setDataCadastro(data.format(formatter));
-        Cliente clienteSalvo = save(cliente);
-        return clienteSalvo;
+        return save(cliente);
     }
 
     @Override
